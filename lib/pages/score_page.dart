@@ -11,7 +11,7 @@ class ScorePage extends StatelessWidget{
       child: new Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          new Text("Your GPA is: ",style: new TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 50.0)),
+          new Text("Your GPA",style: new TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 50.0)),
           new Text(score.toStringAsFixed(score.truncateToDouble() == score ? 0 : 3),style: new TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 50.0)),
           new IconButton(
             icon: new Icon(Icons.settings_backup_restore),

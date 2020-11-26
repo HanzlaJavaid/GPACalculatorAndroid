@@ -3,7 +3,8 @@ import 'dart:wasm';
 import 'package:flutter/material.dart';
 import './score_page.dart';
 import 'dart:async';
-import './info.dart';
+import './about.dart';
+import 'package:google_fonts/google_fonts.dart';
 class GPAcalc extends StatefulWidget {
   final int n;
 
@@ -33,99 +34,156 @@ class GPAcalcstate extends State<GPAcalc> {
     double sogxc = 0, soc = 0;
     var textFields = <Widget>[];
     bool safeToNavigate=true;
-    textFields.add(new Row(
-      children: [
-        new Padding(
-          padding:new EdgeInsets.only(left: 96.0),
-        ),
-        new Column(
-          children:[
-            new Text(
-              "Grade",
-              overflow: TextOverflow.ellipsis,
-              style: new TextStyle(fontWeight: FontWeight.bold,fontSize: 17.0),
-            ),
-          ]
-        ),
-        new Padding(
-          padding:new EdgeInsets.only(left: 72.0),
-        ),
-        new Column(
-          children:[
-            new Text(
-              "Credits",
-              overflow: TextOverflow.ellipsis,
-              style: new TextStyle(fontWeight: FontWeight.bold,fontSize: 17.0),
+    textFields.add(Padding(
+      padding: const EdgeInsets.only(left: 16,right: 16,bottom: 0,top: 16),
+      child: Container(
+        height: 60,
+
+      child: IntrinsicHeight(
+        child: new Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+              "Provide The Following Details",
+              style: GoogleFonts.roboto(color: Color(0xff73924F),fontSize: 20,fontWeight: FontWeight.bold),
             ),
           ],
-        ),
-        new Padding(
-          padding:new EdgeInsets.only(bottom:25.0),
-        ),
-      ]
+          ),
       ),
-    );
+    ),
+    ));
       list.forEach((i) {
-          textFields.add( new Column(
-                children: [
-                  new Row(
-                 //   mainAxisAlignment: MainAxisAlignment.center,
-                   // crossAxisAlignment: CrossAxisAlignment.center,
-                  children:[
-                    new Text("Subject ${i+1}:",style: new TextStyle(color: Colors.black87,fontWeight: FontWeight.bold),),
-                    new Padding(
-                      padding:new EdgeInsets.all(10.0),
-                    ),
-                    new DropdownButton<String>(
-                      style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
-                      hint: new Text("grade ${i+1}",style:TextStyle(color: Colors.black54,fontWeight: FontWeight.normal),),
-                      value: _selection[i],
-                      items: _items.map((String item) {
-                        return new DropdownMenuItem<String>(
-                          value: item,
-                          child: new Text(item,textAlign: TextAlign.center,),
-                        );
-                      }).toList(),
-                      onChanged: (s) {
-                        setState(() {
-                          _selection[i] = s;
-                        });
-                      },
-                    ),
-                    new Padding(
-                      padding:new EdgeInsets.all(35.0),
-                    ),
-                     
-                    new DropdownButton<String>(
-                      style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
-                      hint: new Text("credit ${i+1}",style:TextStyle(color: Colors.black54,fontWeight: FontWeight.normal),),
-                      value: _selectionCp[i],
-                      items: _itemsCp.map((String items) {
-                        return new DropdownMenuItem<String>(
-                          value: items,
-                          child: new Text(items,textAlign: TextAlign.center,),
-                        );
-                      }).toList(),
-                      onChanged: (s) {
-                        setState(() {
-                          _selectionCp[i] = s;
-                        });
-                      },
-                    ),
-                  ]
-                  ),
+          textFields.add( Padding(
+            padding: const EdgeInsets.only(left: 16,right: 16,bottom: 8,top: 8),
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.green,
+                  width: 2,
+                ),
+                borderRadius: BorderRadius.circular(5)
 
-                ],
               ),
+              child: new Column(
+                    children: [
+                      IntrinsicHeight(
+                        child: new Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                        children:[
+                          new Text("${i+1}",style: GoogleFonts.roboto(color: Colors.black,fontSize: 20,fontWeight: FontWeight.bold,),textAlign: TextAlign.center,),
+                          new Padding(
+                            padding:new EdgeInsets.all(0),
+                          ),
+                          VerticalDivider(
+                            thickness: 2,
+                            color: Colors.green,
+                          ),
+                          DropdownButtonHideUnderline(
+                            child: new DropdownButton<String>(
+                              icon:Container(child: Icon(Icons.arrow_drop_down,size: 30,),padding: EdgeInsets.only(left: 10),),
+                              style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold),
+                              hint: new Text("Select Grade",style:GoogleFonts.roboto(color: Colors.grey,fontSize: 16,fontWeight: FontWeight.bold,),),
+                              value: _selection[i],
+                              items: _items.map((String item) {
+                                return new DropdownMenuItem<String>(
+                                  value: item,
+                                  child: new Text(item,textAlign: TextAlign.center,),
+                                );
+                              }).toList(),
+                              onChanged: (s) {
+                                setState(() {
+                                  _selection[i] = s;
+                                });
+                              },
+                            ),
+                          ),
+                          new Padding(
+                            padding:new EdgeInsets.all(0),
+                          ),
+                          VerticalDivider(
+                            thickness: 2,
+                            color: Colors.green,
+                          ),
+                          Container(
+                            width: 100,
+                            child: TextField(
+                              decoration: InputDecoration(
+                                hintText: "Enter Credits",
+                                hintStyle: GoogleFonts.roboto(color: Colors.grey,fontSize: 16,fontWeight: FontWeight.bold,)
+                              ),
+                              textAlign: TextAlign.center,
+                              keyboardType: TextInputType.number,
+                              onChanged: (s){
+                                _selectionCp[i]  = s;
+                              },
+                            ),
+                          ),
+                        ]
+                        ),
+                      ),
+
+                    ],
+                  ),
+            ),
+          ),
           );
-      });
-        
+      }
+      );
     double res = 0.0;
+      textFields.add(
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Container(
+              width: 200,
+              height: 50,
+              child: RaisedButton(
+                onPressed:() {
+                  for (int i = 0; i < widget.n; i++) {
+                    if(_selectionCp[i]==null){
+                      safeToNavigate = false;
+                      continue;
+                    }
+                    if(_selection[i]==null){
+                      safeToNavigate = false;
+                      continue;
+                    }
+                    double r = double.parse(_selectionCp[i]);
+                    double gp = calculate(_selection[i]);
+                    double cp = r;
+                    double gxc = gp * cp;
+                    sogxc += gxc;
+                    soc += cp;
+                  }
+                  res = sogxc / soc;
+                  if(safeToNavigate)
+                    Navigator.of(context).push(
+                      new MaterialPageRoute(
+                        builder: (BuildContext context) => new ScorePage(res),
+                      ),
+                    );
+                  else{
+                    alert();
+                  }
+                },
+                color:  Color(0xff73924F),
+                child: Text(
+                    "EVALUATE",
+                    style: GoogleFonts.roboto(color: Colors.white,fontSize: 17,fontWeight: FontWeight.bold)
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                ),
+              ),
+            ),
+          )
+      );
 
     return new Scaffold(
       appBar: new AppBar(
+        centerTitle: true,
         title: new Text("GPA calculator"),
-        backgroundColor: Colors.lightGreen,
+        backgroundColor: Color(0xff73924F),
         actions: <Widget>[
           Padding(
               padding: EdgeInsets.only(right: 20.0),
@@ -141,45 +199,24 @@ class GPAcalcstate extends State<GPAcalc> {
           ),
         ],
       ),
-      backgroundColor: Colors.lightGreen[100],
       body: new Container(
-        decoration: new BoxDecoration(border: new Border.all(color: Colors.transparent, width: 30.0)),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            stops: [0.1, 0.4, 0.7, 0.9],
+            colors: [
+              Colors.grey[300],
+              Colors.white,
+              Colors.white,
+              Colors.grey[300],
+            ],
+          ),
+        ),
         child: new ListView(
           children: textFields,
         ),
-      ),
-      floatingActionButton: new FloatingActionButton(
-        tooltip: 'Calculate',
-        backgroundColor: Colors.blueAccent,
-        child: new Icon(Icons.arrow_forward_ios),
-        onPressed: () {
-          for (int i = 0; i < widget.n; i++) {
-            if(_selectionCp[i]==null){
-              safeToNavigate = false;
-              continue;
-            }
-            if(_selection[i]==null){
-              safeToNavigate = false;
-              continue;
-            }
-            double r = double.parse(_selectionCp[i]);
-            double gp = calculate(_selection[i]);
-            double cp = r;
-            double gxc = gp * cp;
-            sogxc += gxc;
-            soc += cp;
-          }
-          res = sogxc / soc;
-          if(safeToNavigate)
-          Navigator.of(context).push(
-                new MaterialPageRoute(
-                  builder: (BuildContext context) => new ScorePage(res),
-                ),
-              );
-          else{
-            alert();
-          }
-        },
+
       ),
     );
   }

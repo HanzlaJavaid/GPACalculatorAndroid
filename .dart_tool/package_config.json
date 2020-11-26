@@ -194,6 +194,36 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "shared_preferences",
+      "rootUri": "file:///C:/sdk/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.10",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "shared_preferences_linux",
+      "rootUri": "file:///C:/sdk/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_linux-0.0.2+2",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "shared_preferences_macos",
+      "rootUri": "file:///C:/sdk/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_macos-0.0.1+10",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "shared_preferences_platform_interface",
+      "rootUri": "file:///C:/sdk/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_platform_interface-1.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "shared_preferences_web",
+      "rootUri": "file:///C:/sdk/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_web-0.1.2+7",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///C:/sdk/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -290,7 +320,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-08-14T20:49:36.193973Z",
+  "generated": "2020-09-08T17:54:19.922998Z",
   "generator": "pub",
   "generatorVersion": "2.9.0"
 }

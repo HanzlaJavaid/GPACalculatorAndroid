@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="C:/sdk/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.11/android" />
+            <option value="C:/sdk/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.10/android" />
             <option value="C:/sdk/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher-5.5.0/android" />
           </set>
         </option>
